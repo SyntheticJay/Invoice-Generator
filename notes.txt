@@ -1,0 +1,20 @@
+
+** CURRENT TODOS **
+
+- Create/Update invoice can do with a little more testing.. but looks good so far!
+- Mock preview of the invoice for changes made 
+- Proper verification of customer phone number
+- Add notes to the invoice PDF
+- Clean up the invoice PDF / make it look better
+- Somehow manage to retain the invoice line item data when the user fails validation
+- Major cleanup of all UI elements
+- Test on new user creation/editing of vat rules, currencies, etc make sure no errors/other people's data is being used
+- Fix seeders/factories
+- Notification bell (notifications already exist, just need to add the bell)
+- Check if there is any major legal requirements for the invoice PDF (I think there is, but I'm not sure) alongside the email being sent to the customer
+- Functional 'ticks' next to invoice num / ref on factory (needs to actually constantly validate both inputs for uniqueness)
+- Modify PDF to include the invoice number, reference, vat on line items, subtotal, vat total, etc
+- Make flash messages look better (they're currently just a simple alert w/ icon issue)
+- Ability to mark invoice as paid
+- Various reports such as
+    - Total invoices grouped by month, customer, etc

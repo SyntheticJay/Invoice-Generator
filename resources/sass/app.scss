@@ -1,0 +1,40 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Font Awesome
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+// js-datepicker
+@import 'js-datepicker';
+
+// Toastr
+@import "toastr";
+
+.dropdown-item i {
+    margin-right: 5px;
+}
+.nav-link i {
+    margin-right: 5px;
+}
+.detail-table td:nth-child(2) {
+    text-align: right;
+}
+.action-btns * {
+    display: inline-block;
+}
+.total-summary {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.total-col {
+    font-size: 1.1em;
+}
+input[type=number] {
+    text-align: right;
+}
