@@ -267,7 +267,7 @@
                     
                     if (quantity === '' || price === '' || vatPercentage === undefined) {
                         $(row).find('.total').text('??');
-                        continue;
+                        return;
                     }
 
                     quantity      = parseFloat(quantity);
