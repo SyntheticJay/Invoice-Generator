@@ -62,10 +62,12 @@ class GenerateInvoice implements ShouldQueue
      */
     public function failed($why = null)
     {
-        Log::error('Invoice generation failed for invoice: ' . $this->invoice->id);
-        
         $this->invoice->creator->notify(
             new InvoiceGenerationFailureNotification($this->invoice, $why)
         );
+        
+        Log::error('Invoice generation failed for invoice: ' . $this->invoice->id);
+        
+        report(new \Exception('Invoice generation failed for invoice: ' . $this->invoice->id . ' - ' . $why));
     }
 }

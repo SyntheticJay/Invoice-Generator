@@ -17,11 +17,7 @@ trait CalculatesInvoiceTotals
         $vat       = 0;
         $total     = 0;
         $lineItems = [];
-
-        if (!$this->line_items) {
-            return;
-        }
-
+        
         foreach ($this->line_items as $lineItem) {
             $percentage = VATRule::find($lineItem['vat_id'])->percentage;
             $lineTotal  = $lineItem['unit_price'] * $lineItem['quantity'];
@@ -33,8 +29,7 @@ trait CalculatesInvoiceTotals
 
             $lineItem['vat_value'] = $vatValue;
             $lineItem['total']     = $lineTotal + $vatValue;
-
-            $lineItems[] = $lineItem;
+            $lineItems[]           = $lineItem;
         }
 
         $this->merge([
