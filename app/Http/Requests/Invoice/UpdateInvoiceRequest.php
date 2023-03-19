@@ -32,9 +32,9 @@ class UpdateInvoiceRequest extends FormRequest
         return [
             'customer_id'    => 'required|integer|exists:customers,id',
             'currency_id'    => 'required|integer|exists:currencies,id',
-            'invoice_number' => 'required|string|max:255',
+            'invoice_number' => 'required|string|max:255|unique:invoices,invoice_number,' . $this->invoice->id,
             'invoice_date'   => 'required|string',
-            'reference'      => 'required|string|max:255|unique:invoices,reference,' . $this->invoice->id,
+            'reference'      => 'required|string|max:255',
             'sub_value'      => 'required|numeric',
             'vat_value'      => 'required|numeric',
             'total_value'    => 'required|numeric',

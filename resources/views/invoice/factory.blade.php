@@ -26,7 +26,7 @@
                                             <label for="customer_id">Customer</label>
                                         </div>
                                         <div class="col text-end">
-                                             <small class="text-end">
+                                                <small class="text-end">
                                                 <a href="{{ route('customer.create') }}">Create</a>
                                             </small>
                                         </div>
@@ -48,7 +48,7 @@
                                             <label for="currency_id">Currency</label>
                                         </div>
                                         <div class="col text-end">
-                                             <small class="text-end">
+                                                <small class="text-end">
                                                 <a href="{{ route('currency.create') }}">Create</a>
                                             </small>
                                         </div>
@@ -64,28 +64,23 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col form-group">
+                                <div class="col form-group change-listener">               
                                     <div class="row">
-                                        <div class="col-sm-10">
+                                        <div class="col-9">
                                             <label for="invoice_number">Invoice Number</label>
                                         </div>
-                                        <div class="col-1 text-end">
-                                            <i class="fas fa-check-circle text-success"></i>
-                                        </div>
+                                        <div class="col"></div>
                                     </div>
-                                    <input type="text" class="form-control @error('invoice_number') is-invalid @enderror" id="invoice_number" name="invoice_number" value="{{ 
-                                        isset($invoice) ? $invoice->invoice_number : old('invoice_number')
-                                    }}">
+                                        <input 
+                                            type="text" 
+                                            class="form-control @error('invoice_number') is-invalid @enderror" 
+                                            id="invoice_number" 
+                                            name="invoice_number" 
+                                            value="{{  isset($invoice) ? $invoice->invoice_number : old('invoice_number') }}" />
                                 </div>
-                                  <div class="col form-group">
-                                    <div class="row">
-                                        <div class="col-sm-10">
-                                            <label for="reference">Invoice Reference</label>
-                                        </div>
-                                        <div class="col-1 text-end">
-                                            <i class="fas fa-check-circle text-success"></i>
-                                        </div>
-                                    </div>
+                                <div class="form-group col">
+                                    <label for="reference">Invoice Reference</label>
+                                            
                                     <input type="text" class="form-control @error('reference') is-invalid @enderror" id="reference" name="reference" value="{{ 
                                         isset($invoice) ? $invoice->reference : old('reference')
                                     }}">
@@ -206,7 +201,13 @@
                 </form>
             </div>
             <div class="col px-5">
-                <embed id="preview">
+                @if (isset($invoice))
+                    @if ($invoice->files->count() == 0)
+                        <h3 class="text-center">No Preview</h3>                  
+                    @else    
+                        <embed src="{{ asset('invoices/' . $invoice->files->last()->file_name) }}" type="application/pdf" width="100%" height="600px" />
+                    @endif
+                @endif
             </div>
         </div>
     </div>
@@ -241,7 +242,7 @@
 
             const reprocess = () => {
                 $('#currency_id').trigger('change');
-                
+        
                 if ($('.line-items-table tbody tr').length === 0) {
                     $('.line-items-table tbody').html(emptyRow());
                     setTotals(0, 0, 0);

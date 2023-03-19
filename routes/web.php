@@ -9,6 +9,7 @@ use App\Http\Controllers\Invoice\InvoiceController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Currency\CurrencyController;
 use App\Http\Controllers\VATRule\VATRuleController;
+use App\Http\Controllers\DefaultSetting\DefaultSettingController;
 
 /*
 |--------------------------------------------------------------------------

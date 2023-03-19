@@ -20,8 +20,9 @@ class DatabaseSeeder extends Seeder
             Customer\CustomerSeeder::class,
             Currency\CurrencySeeder::class,
             VATRule\VATRuleSeeder::class,
-            Invoice\InvoiceSeeder::class,
+            // FIX: Invoice\InvoiceSeeder::class,
             Invoice\InvoiceFileSeeder::class,
+            DefaultSetting\DefaultSettingSeeder::class,
         ]);
     }
 }

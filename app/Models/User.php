@@ -11,6 +11,7 @@ use App\Models\Currency\Currency;
 use App\Models\Customer\Customer;
 use App\Models\VATRule\VATRule;
 use App\Models\Invoice\Invoice;
+use App\Models\DefaultSetting\DefaultSetting;
 
 class User extends Authenticatable
 {
@@ -94,5 +95,15 @@ class User extends Authenticatable
     public function invoices()
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    /**
+     * Get the default settings for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function defaultSettings()
+    {
+        return $this->hasMany(DefaultSetting::class);
     }
 }
